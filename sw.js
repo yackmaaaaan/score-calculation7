@@ -1,4 +1,4 @@
-const CACHE="mahjong-4p-complete-v10";
+const CACHE="mahjong-4p-complete-v11";
 const CORE=["./","./index.html","./style.css?v=10","./app.js?v=10","./manifest.json?v=10","./icon/app-icon-192-v9.png","./icon/app-icon-512-v9.png","./icon/title-mahjong-v9.png","./icon/title-calculator-v9.png","./icon/title-hand-v9.png"];
 self.addEventListener("install",e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(CORE)).then(()=>self.skipWaiting())));
 self.addEventListener("activate",e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
