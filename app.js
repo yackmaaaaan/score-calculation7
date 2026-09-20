@@ -60,7 +60,7 @@
     {name:'字一色', han:13, open:'役満', freq:null, note:'役満'},
     {name:'緑一色', han:13, open:'役満', freq:null, note:'役満'},
     {name:'清老頭', han:13, open:'役満', freq:null, note:'役満'},
-    {name:'九蓮宝燈', han:13, open:'役満', freq:null, note:'純正形はダブル設定に依存'},
+    {name:'九蓮宝燈', han:13, open:'役満', freq:null, note:'純正九蓮宝燈はダブル役満」'},
     {name:'四槓子', han:13, open:'役満', freq:null, note:'役満'},
     {name:'天和', han:13, open:'役満', freq:null, note:'役満'},
     {name:'地和', han:13, open:'役満', freq:null, note:'役満'}
@@ -634,8 +634,8 @@
     let html='<table class="score-table"><thead><tr><th>符 ＼ 飜</th>'+hans.map(h=>`<th>${h}飜</th>`).join('')+'</tr></thead><tbody>';
     fus.forEach(f=>{html+=`<tr><th>${f}符</th>`;hans.forEach(h=>{
       // 20符2飜はツモのみ。20符1飜・25符1飜も通常のロン表には存在しない。
-      const noRon=(f===20&&h===1)||(f===25&&h===1);
-      const noTsumo=(f===20&&h===1)||(f===25&&h===2);
+      const noRon=(f===20)||(f===25&&h===1);
+      const noTsumo=(f===20&&h<2)||(f===25&&h<3);
       if(noRon && noTsumo){html+=`<td><span class="ron">—</span><span class="tsumo">—</span></td>`;}
       else if(noRon){const ts=tableCell(h,f,dealer,false);html+=`<td><span class="ron">—</span><span class="tsumo">${ts}</span></td>`;}
       else if(noTsumo){const r=tableCell(h,f,dealer,true);html+=`<td><span class="ron">${r}</span><span class="tsumo">—</span></td>`;}
